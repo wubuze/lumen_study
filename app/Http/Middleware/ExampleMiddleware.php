@@ -15,6 +15,9 @@ class ExampleMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!$request->api_token) {
+            return redirect('home');
+        }
         return $next($request);
     }
 }

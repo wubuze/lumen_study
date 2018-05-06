@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Model\Test;
+use App\Http\Model\User;
+use Illuminate\http\Request;
 
 class Home extends Controller
 {
@@ -13,16 +14,27 @@ class Home extends Controller
      */
     public function __construct()
     {
-        //
+        $this->middleware('auth', ['except' => ['index', 'home']]);
+
     }
 
     //
     public function index()
     {
-        Test::create(
-            ['username'=> 'wbz2', 'pwd'=> '123445']
-        );
-        return Test::get();
+        
         return 'index';
+    }
+
+
+    public function home()
+    {
+       
+        return 'home';
+    }
+
+    public function user(Request $req)
+    {
+
+        return $req->user();
     }
 }

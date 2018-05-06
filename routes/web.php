@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,3 +15,5 @@
 // });
 
 $app->get('/', 'Home@index');
+$app->get('/home', 'Home@home');
+$app->get('/user', 'Home@user');
